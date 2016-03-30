@@ -47,9 +47,9 @@
 
           <div class="form-group col-xs-12 col-md-5 col-md-offset-1">
             <label for="">Hue Rotate:</label>
-            <input type="range" min="0" max="360" ng-model="image.hueRotate" />
+            <input type="range" min="-100" max="360" ng-model="image.hueRotate" />
             <div class="input-group">
-              <input type="text" min="0" max="360" ng-model="image.hueRotate" class="form-control input-small" />
+              <input type="text" min="-100" max="360" ng-model="image.hueRotate" class="form-control input-small" />
               <span class="input-group-addon">deg</span>
             </div>
             <button type="button" class="btn btn-link" ng-click="image.hueRotate=0">Reset</button>

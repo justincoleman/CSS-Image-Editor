@@ -22,7 +22,3 @@ V1: March 29, 2016 - Basic functionality, including all possible CSS filter effe
 ## Credits
 
 This app is built with AngularJS so a huge shout-out to that team for making this so simple!
-
-## License
-
-TODO: Write license
