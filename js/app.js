@@ -3,6 +3,8 @@ var app = angular.module('app', []);
 app.controller('EditorCtrl', ['$scope', function ($scope) {
     $scope.defaultImage = 'https://images.unsplash.com/photo-1456428199391-a3b1cb5e93ab?crop=entropy&fit=crop&fm=jpg&h=1025&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1675';
 
+    $scope.vignette = 'off';
+
     $scope.image = {
         blur: 0,
         brightness: 1,
@@ -24,6 +26,7 @@ app.controller('EditorCtrl', ['$scope', function ($scope) {
 
     $scope.reset = function() {
         $scope.image = angular.copy($scope.orig);
+        $scope.vignette = 'off';
     };
 
     $scope.vivid = function() {
@@ -50,8 +53,24 @@ app.controller('EditorCtrl', ['$scope', function ($scope) {
         $scope.image.brightness = 1.1;
         $scope.image.contrast = 1.5;
         $scope.image.grayscale = 1;
+
+        $scope.vignette = 'on';
     };
 
+    $scope.brighten = function() {
+        $scope.reset();
+
+        $scope.image.brightness = 1.4;
+        $scope.image.contrast = 1.1;
+    };
+
+    $scope.trippy = function() {
+        $scope.reset();
+
+        $scope.image.brightness = 0.9;
+        $scope.image.invert = 100;
+        $scope.image.saturate = 400;
+    };
 
     $scope.$watch('image', function(newVal, oldVal){
         $scope.imageFilter =
@@ -71,6 +90,14 @@ app.controller('EditorCtrl', ['$scope', function ($scope) {
            "-webkit-filter" : $scope.imageFilter,
            "filter" : $scope.imageFilter
         };
+    }, true);
+
+    $scope.$watch('vignette', function(newVal, oldVal){;
+        if (newVal === 'on') {
+            $('.image').addClass('vignette');
+        } else {
+            $('.image').removeClass('vignette');
+        }
     }, true);
 
 

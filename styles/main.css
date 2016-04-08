@@ -74,6 +74,36 @@ code {
   width: 95%;
 }
 
+.image {
+  position: relative;
+  width: 500px;
+}
+
+.vignette:before {
+    background: -webkit-radial-gradient(circle, rgba(75, 75, 75, 0.2) 80%, rgba(0,0,0,0.55));
+    background: radial-gradient(circle, rgba(75, 75, 75, 0.2) 80%, rgba(0,0,0,0.55));
+}
+
+.image:before,
+.image:after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.image:before{
+  z-index: 2;
+}
+
+.image:after {
+  z-index: 3;
+}
+
 img {
   max-width: 500px;
   display: block;

@@ -12,6 +12,7 @@
   <header id="header" class="header">
      <h1>CSS Image Editor</h1>
   </header><!-- /header -->
+
   <div class="main" ng-app="app">
     <div ng-controller="EditorCtrl">
       <div class="controls">
@@ -92,9 +93,23 @@
             <button type="button" class="btn btn-link" ng-click="image.sepia=0">Reset</button>
           </div>
 
-          <a class="btn btn-link toggle" ng-click="advancedToggle = !advancedToggle"><i class="glyphicon" ng-class="{'glyphicon-chevron-down': advancedToggle , 'glyphicon-chevron-right': !advancedToggle }"></i>View More</a>
+          <div class="form-group col-xs-12 col-md-5">
+            <div class="checkbox">
+              <h5>Vignette
+                <input type="checkbox" ng-model="vignette" ng-true-value="'on'" ng-false-value="'off'">
+                <span ng-show="vignette == 'on'">
+                  On
+                </span>
+              </h5>
+            </div>
+          </div>
 
-          <div ng-show="advancedToggle" class="advanced">
+
+          <div class="col-xs-12 no-pad">
+            <a class="btn btn-link toggle" ng-click="advancedToggle = !advancedToggle"><i class="glyphicon" ng-class="{'glyphicon-chevron-down': advancedToggle , 'glyphicon-chevron-right': !advancedToggle }"></i>View More</a>
+          </div>
+
+          <div ng-show="advancedToggle" class="advanced col-xs-12 no-pad">
             <div class="form-group col-xs-12 col-md-5">
               <label for="">Blur:</label>
               <input type="range" min="0" max="25" ng-model="image.blur" />
@@ -154,14 +169,18 @@
 
       <div class="output">
         <h3>Preset Filters</h3>
-        <button class="btn btn-primary" ng-click="vivid()">Vivid</button>
+        <button class="btn btn-primary" ng-click="vivid()">Vivid Colors</button>
         <button class="btn btn-primary" ng-click="vintage()">Vintage</button>
         <button class="btn btn-primary" ng-click="bw()">Black &amp; White</button>
+        <button class="btn btn-primary" ng-click="brighten()">Brighten</button>
+        <button class="btn btn-primary" ng-click="trippy()">Trippy</button>
         <button class="btn btn-danger" ng-click="reset()">Reset</button>
 
-        <img ng-src="{{defaultImage}}"
-           ng-style="imageStyles"
-        />
+        <div class="image">
+          <img ng-src="{{defaultImage}}"
+             ng-style="imageStyles"
+          />
+        </div>
 
         <code>
             -webkit-filter:
